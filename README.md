@@ -2,7 +2,8 @@
 
 ### Environment
 - BeagleBoneBlack(BBB) Ubuntu 12.04
-- http://www.armhf.com/boards/beaglebone-black/#precise
+    - http://www.armhf.com/boards/beaglebone-black/#precise
+- WLAN adaptor:ELECOM WDC-867U3
 
 ### How to install it
 - Download 8812au.ko in this repository on your BBB.
@@ -58,3 +59,5 @@ rename4   unassociated  Nickname:"xxxxx"
           Rx invalid nwid:0  Rx invalid crypt:0  Rx invalid frag:0
           Tx excessive retries:0  Invalid misc:0   Missed beacon:0
 ```
+### How to build it
+- See http://d.hatena.ne.jp/nihohi/
