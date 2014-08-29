@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="11ac driver for bbb : RTL8812AU driver for  Ubuntu 12.04 on Beagle Bone Black(BBB).">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>11ac driver for bbb</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/nihohi0428/11ac_driver_for_BBB">View on GitHub</a>
+
+          <h1 id="project_title">11ac driver for bbb</h1>
+          <h2 id="project_tagline">RTL8812AU driver for  Ubuntu 12.04 on Beagle Bone Black(BBB).</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/nihohi0428/11ac_driver_for_BBB/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/nihohi0428/11ac_driver_for_BBB/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>
+<a name="environment" class="anchor" href="#environment"><span class="octicon octicon-link"></span></a>Environment</h3>
+
+<ul>
+<li>BeagleBoneBlack(BBB) Ubuntu 12.04</li>
+<li><a href="http://www.armhf.com/boards/beaglebone-black/#precise">http://www.armhf.com/boards/beaglebone-black/#precise</a></li>
+</ul><h3>
+<a name="how-to-install-it" class="anchor" href="#how-to-install-it"><span class="octicon octicon-link"></span></a>How to install it</h3>
+
+<ul>
+<li>Download 8812au.ko in this repository on your BBB.</li>
+<li>Put it on the following module directory.</li>
+</ul><pre><code>$ sudo cp 8812au.ko /lib/modules/3.8.13-bone30/kernel/net/wireless/
+$ sudo chmod 644 /lib/modules/3.8.13-bone30/kernel/net/wireless/8812au.ko 
+$ sudo /sbin/depmod -a 3.8.13-bone30
+</code></pre>
+
+<h3>
+<a name="how-to-start-it" class="anchor" href="#how-to-start-it"><span class="octicon octicon-link"></span></a>How to start it</h3>
+
+<ul>
+<li>Insert your WLAN adaptor to your BBB.</li>
+<li>Load the driver.</li>
+</ul><pre><code>$ sudo modprobe 8812au
+</code></pre>
+
+<ul>
+<li>Configure your wlan setting.</li>
+</ul><pre><code>$ cat /etc/wpa_supplicant.conf
+network={
+        ssid="Your AP"
+        proto=WPA RSN   
+        key_mgmt=WPA-PSK
+        pairwise=CCMP
+        group=CCMP
+        psk="password"
+        wpa_ptk_rekey=600
+}
+</code></pre>
+
+<ul>
+<li>You can check iwconfig command.</li>
+</ul><pre><code>$ sudo iwconfig
+wlan0     IEEE 802.11AC  ESSID:"Your AP"  Nickname:"xxxxx"
+          Mode:Managed  Frequency:5.5 GHz  Access Point: aa:bb:cc:xx:yy:zz
+          Bit Rate:867 Mb/s   Sensitivity:0/0  
+          Retry:off   RTS thr:off   Fragment thr:off
+          Encryption key:****-****-****-****-****-****-****-****   Security mode:open
+          Power Management:off
+          Link Quality=100/100  Signal level=-45 dBm  Noise level=0 dBm
+          Rx invalid nwid:0  Rx invalid crypt:0  Rx invalid frag:0
+          Tx excessive retries:0  Invalid misc:0   Missed beacon:0
+
+lo        no wireless extensions.
+
+eth0      no wireless extensions.
+
+rename4   unassociated  Nickname:"xxxxx"
+          Mode:Managed  Frequency=2.412 GHz  Access Point: Not-Associated   
+          Sensitivity:0/0  
+          Retry:off   RTS thr:off   Fragment thr:off
+          Encryption key:off
+          Power Management:off
+          Link Quality=0/100  Signal level=0 dBm  Noise level=0 dBm
+          Rx invalid nwid:0  Rx invalid crypt:0  Rx invalid frag:0
+          Tx excessive retries:0  Invalid misc:0   Missed beacon:0
+</code></pre>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">11ac driver for bbb maintained by <a href="https://github.com/nihohi0428">nihohi0428</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
