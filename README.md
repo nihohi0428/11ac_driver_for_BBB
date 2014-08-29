@@ -32,7 +32,7 @@ network={
         wpa_ptk_rekey=600
 }
 ```
-- You can check iwconfig command.
+- You can check wlan module working by using iwconfig command.
 ```
 $ sudo iwconfig
 wlan0     IEEE 802.11AC  ESSID:"Your AP"  Nickname:"xxxxx"
